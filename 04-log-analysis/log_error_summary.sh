@@ -27,10 +27,9 @@ echo | tee -a "$REPORT"
 
 echo "===== ERROR COUNT =====" | tee -a "$REPORT"
 
-grep -Eic 'ERROR|CRITICAL|FATAL' "$LOG_FILE" \
-    | tee -a "$REPORT" || true
+ERROR_COUNT=$(grep -Eic 'ERROR|CRITICAL|FATAL' "$LOG_FILE" || true)
 
-echo | tee -a "$REPORT"
+echo "$ERROR_COUNT" | tee -a "$REPORT"
 
 echo "===== ERROR DETAILS =====" | tee -a "$REPORT"
 
